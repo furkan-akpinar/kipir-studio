@@ -1,0 +1,28 @@
+.services-poster { background: #1800ff; color: #f3b7d5; padding: 85px 4% 58px; text-align: center; overflow: clip; scroll-margin-top: -95px; }
+.services-manifesto { max-width: 1030px; margin: 0 auto 68px; color: #eee9df; font-size: clamp(16px, 1.15vw, 19px); line-height: 1.45; text-wrap: pretty; }
+.services-manifesto strong { font-weight: 800; }
+.services-type { max-width: 1700px; margin-inline: auto; display: flex; flex-direction: column; gap: clamp(28px, 3vw, 58px); }
+.services-row { display: flex; justify-content: center; align-items: center; gap: clamp(16px, 2vw, 38px); font-family: 'Archivo Black', sans-serif; font-size: clamp(32px, 4.75vw, 96px); font-weight: 400; line-height: 1.08; letter-spacing: -.055em; }
+.services-row > span { white-space: nowrap; }
+.services-row .services-dots { font-family: Arial, sans-serif; letter-spacing: -.12em; font-size: .8em; padding-right: .12em; }
+.services-sticker { display: block; width: clamp(65px, 7.5vw, 140px); height: clamp(65px, 7.5vw, 140px); flex: 0 0 auto; object-fit: contain; animation: service-sticker-rock 3.8s ease-in-out infinite alternate; }
+.sticker-cursor { --sticker-tilt: 14deg; animation-delay: -1.4s; }
+.sticker-shaka { --sticker-tilt: -8deg; }
+.sticker-sideways { --sticker-tilt: -70deg; animation-delay: -2.7s; }
+.services-finale { padding-top: 6px; }
+.services-asterisk { display: inline-block; vertical-align: top; margin-left: .02em; }
+.services-postscript { color: #eee9df; font-size: 14px; margin-top: 42px; }
+@keyframes service-sticker-rock { from { transform: translateY(-3px) rotate(calc(var(--sticker-tilt) - 5deg)); } to { transform: translateY(4px) rotate(calc(var(--sticker-tilt) + 5deg)); } }
+@media(max-width:699px) {
+  .services-poster { padding: 96px 5% 45px; }
+  .services-manifesto { font-size: 16px; line-height: 1.55; margin-bottom: 42px; }
+  .services-type { gap: 32px; }
+  .services-row { flex-wrap: wrap; column-gap: 12px; row-gap: 8px; font-size: clamp(25px, 7.2vw, 48px); letter-spacing: -.055em; }
+  .services-sticker { width: 52px; height: 52px; }
+  .services-row:nth-child(2), .services-row:nth-child(4) { padding-inline: 3%; }
+  .services-row:nth-child(3) { column-gap: 10px; }
+  .services-row:nth-child(3) > span:last-child { flex-basis: 100%; }
+  .services-finale { font-size: 8.4vw; }
+  .services-postscript { margin-top: 30px; font-size: 13px; }
+}
+@media(prefers-reduced-motion:reduce) { .services-sticker { animation: none; transform: rotate(var(--sticker-tilt)); } }

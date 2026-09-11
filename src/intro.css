@@ -1,0 +1,45 @@
+.intro { height: 400svh; position: relative; background: #ff5038; color: #eee9df; overflow: clip; }
+.intro-stage { position: sticky; top: 0; height: 100svh; overflow: clip; }
+.intro-logo-scene { position: absolute; inset: 0; display: grid; place-items: center; padding: calc(80px + 6svh) 6vw 80px; will-change: transform; }
+.intro-mark { font-family: 'Anton', sans-serif; font-size: clamp(9rem, 22vw, 32rem); font-weight: 400; line-height: 1; letter-spacing: 0; transform: scaleX(1.5); transform-origin: center; margin: 0; }
+.intro-letters { display: flex; gap: .055em; overflow: clip; padding: .17em .07em; margin: -.17em -.07em; }
+.intro-letter, .intro-glyph { display: inline-block; transform-origin: 50% 85%; }
+.intro-glyph { animation: kipir-letter-dance 5.6s cubic-bezier(.45,0,.3,1) infinite; }
+@keyframes kipir-letter-dance {
+  0%, 100% { transform: translateY(-.045em) rotate(-3deg) scale(.98,1.03); }
+  20% { transform: translateY(.055em) rotate(2deg) scale(1.04,.92); }
+  42% { transform: translateY(-.075em) rotate(-3deg) scale(.95,1.07); }
+  65% { transform: translateY(.02em) rotate(3deg) scale(1.02,.97); }
+  82% { transform: translateY(-.025em) rotate(1deg) scale(1,1.02); }
+}
+.intro-slogan { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 1.2svh; padding: 95px 0 70px; }
+.intro-slogan-line { display: grid; place-items: center; width: 100%; will-change: transform; }
+.intro-phrase-content { position: relative; width: max-content; max-width: 86vw; }
+.intro-phrase { display: block; font-family: 'Anton', sans-serif; font-size: min(13vw, 19svh, 15rem); font-weight: 400; line-height: 1.15; letter-spacing: -.022em; white-space: nowrap; }
+.intro-sticker-position { position: absolute; }
+.intro-sticker { display: block; padding: .5em .9em; background: var(--lemon); color: #b92c1a; font-family: 'Anton', sans-serif; font-size: clamp(1rem, 1.65vw, 1.65rem); line-height: 1.2; transform: rotate(var(--tilt)); box-shadow: 3px 5px 0 var(--coral), 4px 6px 0 var(--lemon); }
+.scene-idea .intro-sticker-position { left: -16%; top: 4%; --tilt: -12deg; }
+.scene-experience .intro-sticker-position { right: -37%; top: 30%; --tilt: 9deg; }
+.scene-together .intro-sticker-position { left: -24%; bottom: 1%; --tilt: -8deg; }
+.intro.intro-reduced { height: auto; }
+.intro-reduced .intro-stage { position: relative; height: auto; overflow: visible; }
+.intro-reduced .intro-logo-scene { position: relative; min-height: 90svh; will-change: auto; }
+.intro-reduced .intro-slogan { position: relative; min-height: 90svh; }
+.intro-reduced .intro-slogan-line { will-change: auto; }
+.intro-reduced .intro-glyph { animation: none; }
+@media (max-width: 699px) {
+  .intro-mark { font-size: 26vw; transform: scaleX(1.4); }
+  .intro-slogan { gap: 25px; padding-top: 110px; padding-bottom: 90px; }
+  .intro-phrase { font-size: 16vw; }
+  .intro-sticker { font-size: 12px; padding: .5em .65em; }
+  .scene-idea .intro-sticker-position { top: -60%; left: 0; }
+  .scene-experience .intro-sticker-position { right: -40%; top: 32%; }
+  .scene-together .intro-sticker-position { bottom: -65%; left: -12%; }
+}
+@media (max-height: 550px) and (min-width: 700px) {
+  .intro-mark { font-size: min(23vw, 52svh); }
+  .intro-slogan { padding: 65px 0 30px; gap: 0; }
+  .intro-phrase { font-size: 18svh; }
+  .intro-sticker { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .intro-glyph { animation: none; } }

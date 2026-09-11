@@ -1,0 +1,13 @@
+.marquee.seamless-marquee { padding: 23px 0; overflow: hidden; }
+.seamless-marquee > .marquee-track { display: flex; gap: 0; width: max-content; animation: kipir-continuous-marquee 55s linear infinite; }
+.seamless-marquee .marquee-group { display: flex; flex: 0 0 auto; min-width: 100vw; }
+.seamless-marquee .marquee-item { display: flex; flex: 0 0 auto; align-items: center; gap: 26px; padding-right: 26px; }
+.seamless-marquee .marquee-item > span { margin: 0; font-family: 'Anton', sans-serif; font-size: 44px; line-height: 1.1; white-space: nowrap; }
+.seamless-marquee .marquee-item > .marquee-spark { font-family: Arial, sans-serif; font-size: 52px; }
+@keyframes kipir-continuous-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media(max-width:699px) {
+  .marquee.seamless-marquee { padding: 18px 0; }
+  .seamless-marquee .marquee-item { gap: 20px; padding-right: 20px; }
+  .seamless-marquee .marquee-item > span { font-size: 31px; }
+  .seamless-marquee .marquee-item > .marquee-spark { font-size: 35px; }
+}

@@ -1,0 +1,32 @@
+:root { --navigation-ink: #fff4da; --navigation-outline: #25202e; }
+header.site-header {
+  position: fixed;
+  background: transparent;
+  backdrop-filter: none;
+  border: 0;
+  box-shadow: none;
+  color: var(--navigation-ink);
+  pointer-events: none;
+}
+.brand-link { display: inline-flex; align-items: center; min-width: 80px; min-height: 44px; pointer-events: auto; }
+.brand-logo { display: block; width: 86px; height: auto; max-width: none; }
+.site-header .menu-button, .menu-top .menu-button {
+  color: var(--navigation-ink);
+  -webkit-text-stroke: 1.3px var(--navigation-outline);
+  paint-order: stroke fill;
+  text-shadow: 0 1px 1px #25202e40;
+  border: 0;
+  border-radius: 0;
+  padding: 10px 0 10px 16px;
+  background: transparent;
+  gap: 12px;
+  font-size: 18px;
+  pointer-events: auto;
+}
+.site-header :focus-visible { outline-color: var(--navigation-ink); box-shadow: 0 0 0 5px var(--navigation-outline); }
+.footer .brand-logo { width: 126px; }
+.menu-top .brand-logo { width: 86px; }
+@media(max-width:699px) {
+  .brand-logo, .menu-top .brand-logo { width: 76px; }
+  .site-header .menu-button, .menu-top .menu-button { font-size: 16px; }
+}

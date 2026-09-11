@@ -1,0 +1,97 @@
+@font-face {
+  font-family: 'Archivo Black';
+  src: url('/fonts/archivo-black.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+.gallery.gallery-reference {
+  position: relative;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  overflow: clip;
+  scroll-margin-top: -95px;
+  background: #e0c8bb;
+  --orbit-width: 50vw;
+  --orbit-height: 30vw;
+  --orbit-radius: 90.355vw;
+}
+.orbit-track { position: absolute; inset: 0; }
+.orbit-stage { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; overflow: clip; }
+.orbit-perspective { width: 0; height: 0; perspective: var(--orbit-radius); perspective-origin: 0 0; pointer-events: none; }
+.orbit-ring { position: relative; width: 0; height: 0; transform-style: preserve-3d; transform: translateZ(calc(-1 * var(--orbit-radius))); will-change: transform; }
+.orbit-panel {
+  position: absolute;
+  width: var(--orbit-width);
+  height: var(--orbit-height);
+  left: calc(var(--orbit-width) * -.5);
+  top: calc(var(--orbit-height) * -.5);
+  border-radius: 8px;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+}
+.orbit-panel .video-surface { border-radius: inherit; overflow: hidden; }
+.orbit-copy-track { position: relative; pointer-events: none; }
+.orbit-controls-track { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.orbit-controls-stage { position: sticky; top: 0; height: 100svh; pointer-events: none; }
+.orbit-copy { height: 100svh; display: flex; align-items: center; justify-content: center; padding: 28px; }
+.orbit-copy-inner { display: flex; flex-direction: column; align-items: center; transform: translateY(10px); }
+.orbit-copy .orbit-title {
+  color: white;
+  font-family: 'Archivo Black', 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 8vw;
+  line-height: 1;
+  letter-spacing: -.06em;
+  text-align: center;
+  max-width: 90vw;
+}
+.orbit-copy .orbit-title-long { font-size: 6.1vw; }
+.orbit-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffb5d2;
+  color: #200e02;
+  border-radius: 999px;
+  padding: 10px 23px;
+  font-family: Arial, sans-serif;
+  font-size: 19.2px;
+  font-weight: 700;
+  line-height: 20px;
+  margin-top: 34px;
+  pointer-events: auto;
+  transition: background .2s;
+}
+.orbit-link:hover { background: #e4fe52; }
+.orbit-copy[aria-hidden=true] .orbit-link { pointer-events: none; }
+.orbit-arrows { position: absolute; left: 0; right: 0; bottom: 34px; display: flex; justify-content: center; gap: 12px; z-index: 4; pointer-events: none; }
+.orbit-arrow { position: relative; display: grid; place-items: center; width: 68px; height: 44px; padding: 0; background: transparent; color: #080b00; border: 0; border-radius: 999px; pointer-events: auto; }
+.orbit-arrow::before { content: ''; position: absolute; inset: 6px 0; background: #e4fe52; border-radius: inherit; transition: background .2s; }
+.orbit-arrow svg { position: relative; width: 22px; height: 22px; }
+.orbit-arrow:disabled { opacity: .4; }
+.orbit-arrow:hover:not(:disabled)::before { background: #ffb5d2; }
+.gallery-assist { position: absolute; top: 95px; left: 24px; z-index: 6; display: flex; gap: 12px; pointer-events: none; }
+.gallery-assist > * { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.gallery-assist > :focus-visible { position: relative; width: auto; height: auto; clip-path: none; padding: 12px; border: 0; border-radius: 4px; background: #e4fe52; pointer-events: auto; }
+.gallery.gallery-reference.gallery-reduced { padding: 130px 6% 70px; }
+.gallery-return { padding: 12px 20px; margin-bottom: 35px; background: #ffb5d2; border: 0; border-radius: 30px; }
+@media (max-width: 991px) {
+  .orbit-copy .orbit-title { font-size: 12vw; }
+  .orbit-copy .orbit-title-long { font-size: 9vw; }
+}
+@media (max-width: 767px) {
+  .orbit-copy .orbit-title { font-size: 13vw; }
+  .orbit-copy .orbit-title-long { font-size: 10vw; max-width: 84vw; }
+  .orbit-link { font-size: 17px; padding: 10px 20px; }
+  .orbit-copy { padding: 16px; }
+  .orbit-arrows { bottom: 34px; }
+}
+@media (max-height: 550px) {
+  .orbit-copy .orbit-title { font-size: min(8vw, 16svh); }
+  .orbit-copy .orbit-title-long { font-size: min(6.1vw, 13svh); }
+  .orbit-link { margin-top: 20px; padding: 8px 18px; font-size: 16px; }
+  .orbit-arrows { bottom: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .orbit-ring { will-change: auto; } }
