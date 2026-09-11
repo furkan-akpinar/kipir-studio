@@ -5,6 +5,10 @@
 <h1 align="center">KIPIR</h1>
 
 <p align="center">
+  <a href="https://kipir-studio.furkan-akpinar.workers.dev"><strong>Canlı siteyi keşfet ↗</strong></a>
+</p>
+
+<p align="center">
   <strong>İyi fikirler yerinde durmaz.</strong><br />
   Fikirleri, insanları ve mekânları aynı hikâyede buluşturan yaratıcı etkinlik ve deneyim stüdyosu.
 </p>
@@ -94,6 +98,7 @@ Deneyim ve hizmet detaylarından ilgili ana sayfa bölümüne dönülebilir. Hiz
 | Tasarım | Özel CSS, duyarlı grid/flex düzenleri, CSS 3D dönüşümleri |
 | Tipografi | Yerel Archivo Black, Anton ve Manrope |
 | Medya | Sessiz H.264 MP4, JPEG, şeffaf PNG ve özgün SVG |
+| Yayın | Cloudflare Workers Static Assets, Wrangler 4 |
 | Kontrol | TypeScript, üretim derlemesi, kayıtlı tarayıcı kontrolleri |
 
 Kesin bağımlılık sürümleri [package-lock.json](package-lock.json) içinde korunur. Uygulama, istemci tarafında çalışan bir React SPA'dır; veritabanı, API anahtarı veya harici video oynatıcı gerektirmez.
@@ -159,9 +164,19 @@ docs/                 Kontrol kayıtları, medya kaynakları ve ekran görüntü
 
 ## Yayın ve mevcut kapsam
 
-Depo kaynak kodunu ve yerel çalıştırma altyapısını içerir; henüz tanımlanmış bir canlı yayın adresi yoktur. GitHub deposuna kod yüklemek siteyi otomatik olarak yayımlamaz.
+**Canlı site:** [kipir-studio.furkan-akpinar.workers.dev](https://kipir-studio.furkan-akpinar.workers.dev)
 
-Uygulama statik olarak sunulabilir. React Router yollarına doğrudan giriş için sunucunun bilinmeyen uygulama yollarını `/index.html` dosyasına yönlendirmesi gerekir. Mevcut yapı kök dizinden sunum içindir; bir alt dizine yayın yapılacaksa Vite `base`, router ve mutlak varlık yolları birlikte uyarlanmalıdır.
+Uygulama Cloudflare Workers üzerinde statik varlıklar olarak yayımlanır. [wrangler.jsonc](wrangler.jsonc), `dist/` çıktısını sunar ve React Router detay sayfalarına doğrudan giriş ile sayfa yenileme için SPA yönlendirmesini tanımlar.
+
+Yetkili Cloudflare hesabıyla yeni bir sürüm yayımlamak için:
+
+```sh
+npm ci
+npm run build
+npx wrangler deploy
+```
+
+İlk giriş için `npx wrangler login`, hesap kontrolü için `npx wrangler whoami` kullanılır. İlk yayın Wrangler ile yapılmıştır; GitHub'a gönderilen değişikliklerin otomatik yayımlanması için ayrıca Workers Builds bağlantısı kurulmalıdır. Yayın ayarları ve doğrulama kaydı [yayın belgesinde](docs/DEPLOYMENT.md) bulunur.
 
 **İletişim formu:** bilgiler yalnızca açık sayfanın React durumunda tutulur; sunucuya gönderilmez, URL'ye veya kalıcı tarayıcı depolamasına yazılmaz. Son kontrol ekranı mesajın gönderilmediğini açıkça belirtir. Gerçek kullanım için iletişim bilgileri, sunucu doğrulaması, gönderim servisi ve uygun aydınlatma metni tamamlanmalıdır.
 
@@ -170,6 +185,7 @@ Uygulama statik olarak sunulabilir. React Router yollarına doğrudan giriş iç
 | Belge | İçerik |
 | --- | --- |
 | [QA kaydı](docs/QA.md) | Yapılan kontroller, önceki revizyonlar ve doğrulanmamış ortamlar |
+| [Cloudflare yayını](docs/DEPLOYMENT.md) | Canlı adres, yayın komutları, GitHub kurulum alanları ve doğrulama kaydı |
 | [Medya ve lisanslar](docs/MEDIA.md) | Kaynaklar, üreticiler, fontlar ve kullanım açıklamaları |
 | [Medya kullanım dökümü](docs/MEDIA_USAGE.md) | Her görsel ve videonun tekil gösterim alanı |
 | [Fotoğraf kayıtları](docs/photo-media.json) | On bir fotoğrafın kaynağı, lisansı, ölçüsü ve SHA-256 değeri |
